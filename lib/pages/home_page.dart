@@ -28,7 +28,6 @@ class _HomePageState extends State<HomePage> {
         child: Icon(Icons.add_alarm),
         onPressed: _Onbtn_Click,
       ),
-      drawer: Drawer(),
     );
   }
 
