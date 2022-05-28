@@ -20,6 +20,7 @@ class _HomePageState extends State<HomePage> {
   }
 
   loadData() async {
+    await Future.delayed(Duration(seconds: 2));
     var catalogueJson =
         await rootBundle.loadString("assets/files/catalogue.json");
     var decodedData = jsonDecode(catalogueJson);
@@ -35,13 +36,15 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text("Home Page - Calculator"),
       ),
-      body: ListView.builder(
-          itemCount: CatalogueModel.items.length,
-          itemBuilder: (context, index) {
-            return ItemWidget(
-              item: CatalogueModel.items[index],
-            );
-          }),
+      body: (CatalogueModel.items != Null && CatalogueModel.items.isNotEmpty)
+          ? ListView.builder(
+              itemCount: CatalogueModel.items.length,
+              itemBuilder: (context, index) {
+                return ItemWidget(
+                  item: CatalogueModel.items[index],
+                );
+              })
+          : Center(child: CircularProgressIndicator()),
       drawer: MyDrawer(),
     );
   }
