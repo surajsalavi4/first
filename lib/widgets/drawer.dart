@@ -1,7 +1,6 @@
 import "package:flutter/material.dart";
 
 class MyDrawer extends StatelessWidget {
-  const MyDrawer({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -9,6 +8,9 @@ class MyDrawer extends StatelessWidget {
       child:ListView(
 
          children: [
+           Center(
+             child: Image.network("http://anyimage.net/wp-content/uploads/2015/11/anyimagelogo.png"),
+           ),
            DrawerHeader(
              padding: EdgeInsets.zero,
                child: Center(
@@ -27,7 +29,8 @@ class MyDrawer extends StatelessWidget {
            ),
            ListTile(
                leading: Icon(Icons.person),
-               title: Text("Profile")
+               title: Text("Profile"),
+
            ),
          ],
       )

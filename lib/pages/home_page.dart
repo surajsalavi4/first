@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
+import '../widgets/Item_widget.dart';
 import '../widgets/drawer.dart';
+import '../models/catalogue.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,23 +13,19 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final dummyList=List.generate(50, (index) => CatalogueModel.items[0]);
+
     return Scaffold(
       appBar: AppBar(
         title: Text("Home Page - Calculator"),
       ),
-      body: Container(
-          padding: const EdgeInsets.all(8.0),
-          child:Center(
-              child:Column(
-                children: [
-                  Text("Hello World"),
-                ],
-              )
-          )
-      ),
-      floatingActionButton: FloatingActionButton(
-        child: Icon(Icons.add_alarm),
-        onPressed: _Onbtn_Click,
+      body:ListView.builder(
+        itemCount: dummyList.length,
+          itemBuilder:(context,index){
+            return ItemWidget(
+              item: dummyList[index],
+            );
+          }
       ),
       drawer: MyDrawer(),
     );
