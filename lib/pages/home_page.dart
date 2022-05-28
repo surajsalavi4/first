@@ -13,44 +13,40 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-
   @override
-  void initState()
-  {
+  void initState() {
     super.initState();
     loadData();
   }
 
-  loadData() async
-  {
-    var catalogueJson= await rootBundle.loadString("assets/files/catalogue.json");
-   var decodedData=jsonDecode(catalogueJson);
+  loadData() async {
+    var catalogueJson =
+        await rootBundle.loadString("assets/files/catalogue.json");
+    var decodedData = jsonDecode(catalogueJson);
+    var productData = decodedData["products"];
+    CatalogueModel.items =
+        List.from(productData).map<Item>((item) => Item.fromMap(item)).toList();
+    setState(() {});
   }
 
   @override
   Widget build(BuildContext context) {
-    final dummyList=List.generate(50, (index) => CatalogueModel.items[0]);
-
     return Scaffold(
       appBar: AppBar(
         title: Text("Home Page - Calculator"),
       ),
-      body:ListView.builder(
-        itemCount: dummyList.length,
-          itemBuilder:(context,index){
+      body: ListView.builder(
+          itemCount: CatalogueModel.items.length,
+          itemBuilder: (context, index) {
             return ItemWidget(
-              item: dummyList[index],
+              item: CatalogueModel.items[index],
             );
-          }
-      ),
+          }),
       drawer: MyDrawer(),
     );
   }
 
-  void _Onbtn_Click()
-  {
-
-    setState((){});
+  void _Onbtn_Click() {
+    setState(() {});
   }
-
 }
