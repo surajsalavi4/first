@@ -1,4 +1,5 @@
 import "package:flutter/material.dart";
+import '../widgets/drawer.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -28,6 +29,7 @@ class _HomePageState extends State<HomePage> {
         child: Icon(Icons.add_alarm),
         onPressed: _Onbtn_Click,
       ),
+      drawer: MyDrawer(),
     );
   }
 
