@@ -16,7 +16,7 @@ class ItemWidget extends StatelessWidget {
         subtitle: Text(item.description),
         trailing: Text("\$${item.price}"),
         onTap: (){
-          print(item.name+" Pressed");
+          //print(item.name+" Pressed");
         },
       ),
     );

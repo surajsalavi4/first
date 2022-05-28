@@ -1,7 +1,9 @@
 import "package:flutter/material.dart";
+import 'package:flutter/services.dart';
 import '../widgets/Item_widget.dart';
 import '../widgets/drawer.dart';
 import '../models/catalogue.dart';
+import 'dart:convert';
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -11,6 +13,20 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+
+  @override
+  void initState()
+  {
+    super.initState();
+    loadData();
+  }
+
+  loadData() async
+  {
+    var catalogueJson= await rootBundle.loadString("assets/files/catalogue.json");
+   var decodedData=jsonDecode(catalogueJson);
+  }
+
   @override
   Widget build(BuildContext context) {
     final dummyList=List.generate(50, (index) => CatalogueModel.items[0]);
