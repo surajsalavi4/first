@@ -4,6 +4,7 @@ import '../widgets/Item_widget.dart';
 import '../widgets/drawer.dart';
 import '../models/catalogue.dart';
 import 'dart:convert';
+import "package:velocity_x/velocity_x.dart";
 
 class HomePage extends StatefulWidget {
   const HomePage({Key? key}) : super(key: key);
