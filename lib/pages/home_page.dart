@@ -1,6 +1,7 @@
 import 'dart:convert';
 
 import "package:flutter/material.dart";
+import 'package:second/pages/item_detail_page.dart';
 import "package:velocity_x/velocity_x.dart";
 import 'package:flutter/services.dart';
 
@@ -79,7 +80,15 @@ class CatalogueList extends StatelessWidget {
       shrinkWrap: true,
       itemCount: CatalogueModel.items.length,
       itemBuilder: (context, index) {
-        return CatalogueItem(item: CatalogueModel.items[index]);
+        return InkWell(
+            onTap: () {
+              Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                      builder: (context) =>
+                          ItemDetails(item: CatalogueModel.items[index])));
+            },
+            child: CatalogueItem(item: CatalogueModel.items[index]));
       },
     );
   }
